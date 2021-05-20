@@ -1,0 +1,18 @@
+const colors = {
+  {% for color, info in colors %}
+    {% if info | length > 2 %}
+      {{ color }}: {
+        {% for shade, info in info %}
+          {{ shade }}: <const>"{{ info.value }}",
+        {% endfor %}
+      },
+    {% else %}
+      {{ color }}: <const>"{{ info.value }}",
+    {% endif %}
+  {% endfor %}
+};
+
+export default colors;
+
+export type Colors = typeof colors;
+export type Color = keyof Colors;
