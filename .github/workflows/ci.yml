@@ -25,6 +25,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run build --if-present
+        env:
+          FIGMA_PERSONAL_TOKEN: ${{ secrets.FIGMA_PERSONAL_TOKEN }}
+          FIGMA_TEAM_ID: ${{ secrets.FIGMA_TEAM_ID }}
       - run: npm test
         env:
           FIGMA_PERSONAL_TOKEN: ${{ secrets.FIGMA_PERSONAL_TOKEN }}
