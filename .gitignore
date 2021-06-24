@@ -1,3 +1,5 @@
+.generated/
+.scripts/
 dist/
 node_modules/
 

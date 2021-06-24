@@ -1,12 +1,15 @@
 {
-  "extends": "@tsconfig/recommended/tsconfig.json",
+  "extends": "@tsconfig/node14/tsconfig.json",
 
   "compilerOptions": {
     "declaration": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "module": "ES2020",
+    "moduleResolution": "node",
     "outDir": "./dist",
     "resolveJsonModule": true,
     "sourceMap": true
   },
-  "exclude": ["node_modules", "**/__mocks__/**", "**/*.test.ts"],
-  "include": ["src/**/*.ts"]
+  "exclude": ["node_modules", "**/__mocks__/**", "**/*.test.ts"]
 }

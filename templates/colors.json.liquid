@@ -1,0 +1,13 @@
+{
+  {% for color in colors %}
+    {% if color[1].value %}
+      "{{ color[0] }}" : "{{ color[1].value }}",
+    {% else %}
+      {{ color[0] }} : {
+        {% for shade in color[1] %}
+          "{{ shade[0] }}" : "{{ shade[1].value }}",
+        {% endfor %}
+      },
+    {% endif %}
+  {% endfor %}
+}

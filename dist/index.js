@@ -1,6 +1,6 @@
 'use strict'
-Object.defineProperty(exports, '__esModule', { value: true })
-const colors = {
+exports.__esModule = true
+var colors = {
   purple: {
     50: '#f8f4f9',
     100: '#f2e9f8',
@@ -268,5 +268,4 @@ const colors = {
   black: '#010201',
   white: '#fbfdfb',
 }
-exports.default = colors
-//# sourceMappingURL=index.js.map
+exports['default'] = colors
