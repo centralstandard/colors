@@ -35,7 +35,12 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: dist
-          path: dist/
+          path: |
+            colors.json
+            index.css
+            index.d.ts
+            index.js
+            index.scss
   release:
     needs: build
     if: contains('refs/heads/main', github.ref)
@@ -58,7 +63,6 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: dist
-          path: dist/
       - run: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
