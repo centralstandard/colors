@@ -1,0 +1,21 @@
+{% for color in colors %}
+  {% if color[1].value %}
+    ${{ color[0] }}: {{ color[1].value }};
+  {% else %}
+    {% for shade in color[1] %}
+      ${{ color[0] }}-{{ shade[0] }}: {{ shade[1].value }};
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+@mixin properties {
+  {% for color in colors %}
+    {% if color[1].value %}
+    --{{ color[0] }}: #{${{ color[0] }}};
+    {% else %}
+      {% for shade in color[1] %}
+        --{{ color[0] }}-{{ shade[0] }}: #{${{ color[0] }}-{{ shade[0] }}};
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+}

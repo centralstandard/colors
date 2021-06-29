@@ -40,6 +40,10 @@ async function main() {
   const cssTemplate = engine.parse(String(await readFile(join(ROOT_DIR, 'templates', 'index.css.liquid'))))
   const css = prettier.format(await engine.render(cssTemplate, { colors }), { parser: 'css' })
   await writeFile(join(ROOT_DIR, '.generated', 'index.css'), css)
+
+  const sassTemplate = engine.parse(String(await readFile(join(ROOT_DIR, 'templates', 'index.scss.liquid'))))
+  const sass = prettier.format(await engine.render(sassTemplate, { colors }), { parser: 'scss' })
+  await writeFile(join(ROOT_DIR, '.generated', 'index.scss'), sass)
 }
 
 main()

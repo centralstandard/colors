@@ -16,21 +16,23 @@
   "license": "ISC",
   "author": "Jeremy Boles <jeremy@centralstandard.com> (https://jeremyboles.com/)",
   "type": "module",
-  "main": "dist/index.js",
+  "exports": "./dist/index.js",
   "types": "dist/index.d.ts",
+  "sass": "dist/index.scss",
   "style": "dist/index.css",
   "files": [
     "dist/colors.json",
     "dist/index.css",
     "dist/index.d.ts",
-    "dist/index.js"
+    "dist/index.js",
+    "dist/index.sass"
   ],
   "scripts": {
     "build": "npm-run-all --serial build:fetch build:dist",
     "build:dist": "npm-run-all --parallel  build:dist:compile build:dist:definitions build:dist:static",
     "build:dist:compile": "babel --extensions '.ts' --ignore '**/*.test.ts','**/__mocks__/**' --out-dir ./dist ./.generated",
     "build:dist:definitions": "tsc --declaration --outDir ./dist ./.generated/index.ts",
-    "build:dist:static": "copyfiles --flat .generated/colors.json .generated/index.css dist",
+    "build:dist:static": "copyfiles --flat .generated/colors.json .generated/index.css .generated/index.scss dist",
     "build:fetch": "npm-run-all --serial build:fetch:compile build:fetch:run",
     "build:fetch:compile": "babel --extensions '.ts' --out-dir ./.scripts ./src",
     "build:fetch:run": "node .scripts/fetch.js",
