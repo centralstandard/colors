@@ -38,8 +38,9 @@ jobs:
           path: |
             colors.json
             index.css
+            index.cjs
             index.d.ts
-            index.js
+            index.mjs
             index.scss
   release:
     needs: build
