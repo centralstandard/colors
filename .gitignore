@@ -1,6 +1,11 @@
 .generated/
 .scripts/
-dist/
 node_modules/
 
 .env
+
+colors.json
+index.css
+index.d.ts
+index.js
+index.scss
