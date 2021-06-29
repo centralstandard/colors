@@ -2,8 +2,8 @@
   "extends": "@tsconfig/node14/tsconfig.json",
 
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "isolatedModules": true,
     "module": "ES2020",
     "moduleResolution": "node",
