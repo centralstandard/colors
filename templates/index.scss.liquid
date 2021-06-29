@@ -1,3 +1,5 @@
+@use "sass:list";
+
 {% for color in colors %}
   {% if color[1].value %}
     ${{ color[0] | kebabcase }}: {{ color[1].value }};
@@ -8,14 +10,18 @@
   {% endif %}
 {% endfor %}
 
-@mixin properties {
+$names: {% for color in colors %} {{ color[0] | kebabcase }} {% endfor %};
+
+@mixin properties($colors: $names) {  
   {% for color in colors %}
-    {% if color[1].value %}
-    --{{ color[0] | kebabcase }}: #{${{ color[0] }}};
-    {% else %}
-      {% for shade in color[1] %}
-        --{{ color[0] | kebabcase }}-{{ shade[0] }}: #{${{ color[0] | kebabcase }}-{{ shade[0] }}};
-      {% endfor %}
-    {% endif %}
+    @if list.index($colors, {{ color[0] | kebabcase }}) {
+      {% if color[1].value %}
+        --{{ color[0] | kebabcase }}: #{${{ color[0] }}};
+      {% else %}
+        {% for shade in color[1] %}
+          --{{ color[0] | kebabcase }}-{{ shade[0] }}: #{${{ color[0] | kebabcase }}-{{ shade[0] }}};
+        {% endfor %}
+      {% endif %}
+    }
   {% endfor %}
 }
