@@ -1,10 +1,10 @@
 :root {
   {% for color in colors %}
     {% if color[1].value %}
-    --{{ color[0] }}: {{ color[1].value }};
+    --{{ color[0] | kebabcase }}: {{ color[1].value }};
     {% else %}
       {% for shade in color[1] %}
-        --{{ color[0] }}-{{ shade[0] }}: {{ shade[1].value }};
+        --{{ color[0] | kebabcase }}-{{ shade[0] }}: {{ shade[1].value }};
       {% endfor %}
     {% endif %}
   {% endfor %}

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import figma from '@centralstandard/figma-tokens'
 import * as dotenv from 'dotenv'
 import { Liquid } from 'liquidjs'
+import kebabcase from 'lodash.kebabcase'
 import prettier from 'prettier'
 
 //
@@ -12,7 +13,9 @@ import prettier from 'prettier'
 // -------------------------------------------------------------------------------------------------
 
 const ROOT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..')
+
 const engine = new Liquid()
+engine.registerFilter('kebabcase', (v: string) => kebabcase(v))
 
 dotenv.config()
 
