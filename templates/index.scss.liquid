@@ -1,4 +1,5 @@
 @use "sass:list";
+@use 'sass:map';
 
 {% for color in colors %}
   {% if color[1].value %}
@@ -15,7 +16,13 @@
   {% endif %}
 {% endfor %}
 
-$names: {% for color in colors %} {{ color[0] | kebabcase }} {% endfor %};
+$all: (
+  {% for color in colors %}
+    {{ color[0] | kebabcase }}: ${{ color[0] | kebabcase }},
+  {% endfor %}
+);
+
+$names: map.keys($all);
 
 @mixin properties($colors: $names) {  
   {% for color in colors %}
