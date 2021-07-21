@@ -7,5 +7,10 @@ registries:
 updates:
   - package-ecosystem: npm
     directory: /
+    registries:
+      - npm-github
     schedule:
-      interval: daily
+      day: monday
+      interval: weekly
+      time: '09:00'
+      timezone: 'America/Chicago'
